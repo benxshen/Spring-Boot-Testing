@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.*;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
@@ -45,11 +45,18 @@ public class SystemTests {
 
 		String url = "http://localhost:"+port+"/wrong";
 
-		try {
-			restTemplate.getForEntity(url, String.class);
-		} catch (HttpClientErrorException e) {
-			Assertions.assertThat(e.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-		}
+		Assertions.assertThat(
+				restTemplate.getForEntity(url, String.class).getStatusCode()
+		).isEqualTo(HttpStatus.BAD_REQUEST);
+	}
+
+	@Test
+	public void testNotExist404() {
+		String url = "http://localhost:"+port+"/testNotExist404";
+
+		Assertions.assertThat(
+				restTemplate.getForEntity(url, String.class).getStatusCode()
+		).isEqualTo(HttpStatus.NOT_FOUND);
 	}
 
 }
