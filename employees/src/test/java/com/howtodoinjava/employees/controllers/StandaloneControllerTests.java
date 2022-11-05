@@ -20,7 +20,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.howtodoinjava.employees.model.Employee;
 import com.howtodoinjava.employees.services.EmployeeService;
 
-@ExtendWith(SpringExtension.class)
 @WebMvcTest(EmployeeController.class)
 public class StandaloneControllerTests {
 

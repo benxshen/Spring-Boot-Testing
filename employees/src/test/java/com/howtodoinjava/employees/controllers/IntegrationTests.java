@@ -11,7 +11,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.howtodoinjava.employees.model.Employee;
 
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class IntegrationTests {
 

@@ -9,7 +9,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.howtodoinjava.employees.controllers.EmployeeController;
 
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class EmployeesApplicationTests {
 
